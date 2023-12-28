@@ -1,6 +1,5 @@
 from rich.console import Console
 import datetime
-import time
 from params import *
 from rag import query
 
@@ -17,16 +16,16 @@ def get_answer(question, rag_mode, llm_mode):
 
 def handle_question(question, rag_mode, llm_mode):
     console.print()
-    console.print('[medium_purple4][{0}] 😎 : [/]{1}'.format(datetime.datetime.now().strftime('%H:%M:%S'), question))
+    console.print('[medium_purple4][{0}] 😎 : [/]{1}'.format(timestamp(), question))
     console.print()
-    console.print('[medium_purple4][{0}] 🤖 : [/]{1}'.format(datetime.datetime.now().strftime('%H:%M:%S'), get_answer(question, rag_mode, llm_mode)))
+    console.print('[medium_purple4][{0}] 🤖 : [/]{1}'.format(timestamp(), get_answer(question, rag_mode, llm_mode)))
     console.print()
 
 def main():
     rag_mode = RAG_MODE['rag_off']
     llm_mode = LLM_MODE['openai']
 
-    question = console.input('[bold deep_sky_blue1]請輸入問題 [light_slate_grey]({0}, {1})[/] 🤗 : [/]'.format(rag_mode, llm_mode))
+    question = console.input('[bold deep_sky_blue1]請輸入問題 [light_slate_grey]({0}, {1})[/] 🌳 : [/]'.format(rag_mode, llm_mode))
     
     while True:
         q = question.lower().strip()
@@ -55,7 +54,7 @@ def main():
         else:
             handle_question(question, rag_mode, llm_mode)
         
-        question = console.input('[bold deep_sky_blue1]請輸入問題 [light_slate_grey]({0}, {1})[/] 🤗 : [/]'.format(rag_mode, llm_mode))
+        question = console.input('[bold deep_sky_blue1]請輸入問題 [light_slate_grey]({0}, {1})[/] 🌳 : [/]'.format(rag_mode, llm_mode))
 
 if __name__ == '__main__':
     main()
